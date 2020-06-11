@@ -65,7 +65,8 @@ def mail_job():
                     ]
     )
 
-schedule.every(10).seconds.do(mail_job)
+schedule.every().friday.at("17:50").do(mail_job)
+
 """
 For more schedule example:
 https://github.com/dbader/schedule
