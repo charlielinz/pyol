@@ -65,14 +65,17 @@ def mail_job():
                     ]
     )
 
-schedule.every().thursday.at("18:58").do(mail_job)
+schedule.every(10).seconds.do(mail_job)
 """
-This sends the Email every 5s.
 For more schedule example:
 https://github.com/dbader/schedule
 """
-print("ready")
 
 while True:
     schedule.run_pending()
-    time.sleep(1)
+    time.sleep(10)
+    with open(r"C:\Users\charlielin\Envs\pyol\pyol\readingfile.txt", encoding="utf-8") as file1:
+        lines = file1.readlines()
+    if lines[0] != "0":
+        break
+    
