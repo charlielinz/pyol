@@ -71,7 +71,7 @@ This sends the Email every 5s.
 For more schedule example:
 https://github.com/dbader/schedule
 """
-print("done")
+print("ready")
 
 while True:
     schedule.run_pending()
