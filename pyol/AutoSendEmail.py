@@ -23,6 +23,7 @@ def send_mail(subject, body, to, cc='', bcc='', attachments=[], just_show=False)
         mail.display()
     else:
         mail.Send()
+
 body = """Dear All,
 
 附件是我的本週週報，祝兩位週末愉快！
@@ -58,15 +59,17 @@ def mail_job():
     send_mail(
         subject='本週週報_林定垣',
         body= body ,
-        to='sandycclin@iii.org.tw;sylviahuang@iii.org.tw',
+        #to='sandycclin@iii.org.tw;sylviahuang@iii.org.tw',
+        to="charlielin@iii.org.tw"
         #cc='',
         attachments=[
             r'C:\Users\charlielin\Desktop\檔案\工作週報for自動寄信\週報 Charlie_lin.xlsx',
                     ]
     )
 
-schedule.every().friday.at("17:50").do(mail_job)
-#schedule.every(10).seconds.do(mail_job)
+#schedule.every().friday.at("17:50").do(mail_job)
+schedule.every(10).seconds.do(mail_job)
+
 """
 For more schedule example:
 https://github.com/dbader/schedule
