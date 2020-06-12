@@ -1,6 +1,10 @@
-with open(r"C:\Users\charlielin\Envs\pyol\pyol\Weekly_Report\To.txt", encoding="utf-8") as file1:
-    lines = file1.readlines()
-    a = 0
-    if lines[a] != "":
-        print(lines[a])
-        a = a+1    
+with open(r"C:\Users\charlielin\Envs\pyol\pyol\Body_weeklyreport.txt", encoding="utf-8") as content:
+    body = content.readlines()
+bodyconcat = ""
+for text in body:
+    bodyconcat += text
+
+body_content = "".join(body)
+
+
+print(body_content)

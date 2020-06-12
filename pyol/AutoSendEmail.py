@@ -27,32 +27,11 @@ def send_mail(subject, body, to, cc='', bcc='', attachments=[], just_show=False)
     else:
         mail.Send()
 
+with open(r"C:\Users\charlielin\Envs\pyol\pyol\Body_weeklyreport.txt", encoding="utf-8") as content:
+    body_content = content.readlines()
 
+body = "".join(body_content)
 
-body = """Dear All,
-
-附件是我的本週週報，祝兩位週末愉快！
-
-          
-Sincerely, 
-  
-Charlie 
-  
-  
-林定垣 Charlie Lin 
-財團法人資訊工業策進會 
-地方創生服務處/北區產業中心 
-DIGI+數位經濟產業推動辦公室 
-臺北市大同區承德路三段287號C棟3樓 
----------------------------------------------------------------------- 
-Institue for Information Industry 
-Regional Industrial Service Division 
-A: 3F., Building C., No. 287, Sec, 3, Chengde Rd., Datong Dist., Taipei City 193, Taiwan 
-T: 886-2592-2681 ext. 142 F: 886-2591-5876 
-E: charlielin@iii.org.tw
-
-
-"""
 path = r"C:\Users\charlielin\Desktop\檔案\工作週報"
 a = os.listdir(path)
 location = path + "\\" + a[-1]
@@ -60,24 +39,17 @@ location = path + "\\" + a[-1]
 
 def mail_job():
     """
-    Customize your mail job here.
-    Here comes an exmaple.
-    Note that when you use this on a windows PC, 
     the format of attachments should be a list containing r-string like
     [r'path1', r'path2'].
     """
     send_mail(
         subject='本週週報_林定垣',
-        body= body ,
+        body=body,
         to='sandycclin@iii.org.tw;sylviahuang@iii.org.tw',
-        #to="charlielin@iii.org.tw",
-        #cc='',
         attachments=[location]
     )
 
 schedule.every().friday.at("17:55").do(mail_job)
-#schedule.every(10).seconds.do(mail_job)
-
 """
 For more schedule example:
 https://github.com/dbader/schedule
@@ -90,4 +62,3 @@ while True:
         lines = file1.readlines()
     if lines[0] != "0":
         break
-    
