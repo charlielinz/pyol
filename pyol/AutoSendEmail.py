@@ -75,7 +75,7 @@ def mail_job():
         attachments=[location]
     )
 
-schedule.every().friday.at("17:50").do(mail_job)
+schedule.every().friday.at("17:55").do(mail_job)
 #schedule.every(10).seconds.do(mail_job)
 
 """
