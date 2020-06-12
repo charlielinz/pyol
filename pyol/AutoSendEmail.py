@@ -58,7 +58,7 @@ def mail_job():
     send_mail(
         subject='本週週報_林定垣',
         body= body ,
-        to='charlielin@iii.org.tw',
+        to='charlielin@iii.org.tw;ilovealinlin@gmail.com',
         #cc='jimmy_lin@chief.com.tw',
         attachments=[
             r'C:\Users\charlielin\Desktop\檔案\工作週報for自動寄信\週報 Charlie_lin.xlsx',
