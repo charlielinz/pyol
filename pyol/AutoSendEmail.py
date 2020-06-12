@@ -1,6 +1,9 @@
 from win32com import client
 import schedule
 import time
+import os
+
+
 
 def send_mail(subject, body, to, cc='', bcc='', attachments=[], just_show=False):
     """
@@ -23,6 +26,8 @@ def send_mail(subject, body, to, cc='', bcc='', attachments=[], just_show=False)
         mail.display()
     else:
         mail.Send()
+
+
 
 body = """Dear All,
 
@@ -48,6 +53,13 @@ E: charlielin@iii.org.tw
 
 
 """
+path = r"C:\Users\charlielin\Desktop\檔案\工作週報"
+
+a = os.listdir(path)
+a.reverse()
+location = path + "\\" + a[0]
+
+
 def mail_job():
     """
     Customize your mail job here.
@@ -62,9 +74,7 @@ def mail_job():
         to='sandycclin@iii.org.tw;sylviahuang@iii.org.tw',
         #to="charlielin@iii.org.tw",
         #cc='',
-        attachments=[
-            r'C:\Users\charlielin\Desktop\檔案\工作週報for自動寄信\週報 Charlie_lin.xlsx',
-                    ]
+        attachments=[location]
     )
 
 schedule.every().friday.at("17:50").do(mail_job)
