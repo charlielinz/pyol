@@ -27,7 +27,7 @@ def send_mail(subject, body, to, cc='', bcc='', attachments=[], just_show=False)
     else:
         mail.Send()
 
-with open(r"C:\Users\charlielin\Envs\pyol\pyol\Body_weeklyreport.txt", encoding="utf-8") as content:
+with open(r"C:\Users\charlielin\Envs\pyol\pyol\Weekly_Report\Body_weeklyreport.txt", encoding="utf-8") as content:
     body_content = content.readlines()
 
 body = "".join(body_content)
@@ -58,7 +58,7 @@ https://github.com/dbader/schedule
 while True:
     schedule.run_pending()
     time.sleep(10)
-    with open(r"C:\Users\charlielin\Envs\pyol\pyol\readingfile.txt", encoding="utf-8") as file1:
+    with open(r"C:\Users\charlielin\Envs\pyol\pyol\Weekly_Report\readingfile.txt", encoding="utf-8") as file1:
         lines = file1.readlines()
     if lines[0] != "0":
         break
