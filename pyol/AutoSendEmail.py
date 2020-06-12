@@ -58,15 +58,15 @@ def mail_job():
     send_mail(
         subject='本週週報_林定垣',
         body= body ,
-        to='charlielin@iii.org.tw;ilovealinlin@gmail.com',
+        to='charlielin@iii.org.tw',
         #cc='jimmy_lin@chief.com.tw',
         attachments=[
             r'C:\Users\charlielin\Desktop\檔案\工作週報for自動寄信\週報 Charlie_lin.xlsx',
                     ]
     )
 
-schedule.every().friday.at("17:50").do(mail_job)
-
+#schedule.every().friday.at("17:50").do(mail_job)
+schedule.every(10).seconds.do(mail_job)
 """
 For more schedule example:
 https://github.com/dbader/schedule
