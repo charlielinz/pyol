@@ -1,0 +1,6 @@
+{
+    "status":"on",
+    "period":15,
+    "subject":"本週週報_林定垣",
+    "to":"charlielin@iii.org.tw;ilovealinlin@gmail.com"
+}
