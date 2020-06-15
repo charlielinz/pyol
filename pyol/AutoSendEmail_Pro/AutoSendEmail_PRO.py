@@ -38,9 +38,30 @@ def send_mail(subject, body, to, cc='', bcc='', attachments=[], just_show=False)
     else:
         mail.Send()
 
+def send_mail_by_config_file(config_dir_path):
+
+    subject_path = os.path.join(config_dir_path, "subject_config.txt")
+    to_path = os.path.join(config_dir_path, "to_config.txt")
+    body_path = os.path.join(config_dir_path, "body_config.txt")
+
+    with open(subject_path, encoding="utf-8") as subject_config:
+        subject_list = subject_config.readlines()
+    subject = subject_list[0]
+
+    with open(to_path, encoding="utf-8") as to_config:
+        to_list = to_config.readlines()
+    to_list_str = ";".join(to_list)
+    to = to_list_str.replace("\n", "")
+
+    with open(body_path, encoding="utf-8") as body_config:
+        body_list = body_config.readlines()
+    body = "".join(body_list)
+
+    send_mail(subject=subject, body=body, to=to)
+
 
 for folder_path in folder_paths_list:
-     
+
     config_dir_path = os.path.join(config_folder_dir_path, folder_path)
     status_config_path = os.path.join(config_dir_path, "status_config.txt")
 
@@ -49,35 +70,13 @@ for folder_path in folder_paths_list:
         status = status_list[0].replace("\n", "")
         period = int(status_list[1])
     if status == "on":
-        def send_mail_by_config_file(config_dir_path):
-              
-            subject_path = os.path.join(config_dir_path, "subject_config.txt")
-            to_path = os.path.join(config_dir_path, "to_config.txt")
-            body_path = os.path.join(config_dir_path, "body_config.txt")
-
-
-            with open(subject_path, encoding="utf-8") as subject_config:
-                subject_list = subject_config.readlines()
-            subject = subject_list[0]
-
-            with open(to_path, encoding="utf-8") as to_config:
-                to_list = to_config.readlines()
-            to_list_str = ";".join(to_list)
-            to = to_list_str.replace("\n", "")
-
-            with open(body_path, encoding="utf-8") as body_config:
-                body_list = body_config.readlines()
-            body = "".join(body_list)
-
-            send_mail(subject=subject, body=body, to=to)
-
-        schedule.every(period).seconds.do(send_mail_by_config_file,config_dir_path=os.path.join(config_folder_dir_path, folder_path))
+        schedule.every(period).seconds.do(send_mail_by_config_file,
+                                          config_dir_path=os.path.join(config_folder_dir_path, folder_path))
 
 
 while True:
     schedule.run_pending()
     time.sleep(10)
-
 
 
 """
