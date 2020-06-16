@@ -68,7 +68,7 @@ def send_mail_by_config_file(config_dir_path):
         "subject":"hello!",
         "to":"hello@yahoo.com.tw;world@gmail.com"
     }
-    
+
     """
 
     config_path = os.path.join(config_dir_path, "config.txt")
@@ -159,7 +159,7 @@ for folder_path in folder_paths_list:
                     send_mail_by_config_file, config_dir_path=config_dir_path)
 
         elif config["cycle"] == "every_monday":
-            if config["time"] == True:
+            if config["time"]:
                 schedule.every().monday.at(config["time"]).do(
                     send_mail_by_config_file, config_dir_path=config_dir_path)
             else:
@@ -167,7 +167,7 @@ for folder_path in folder_paths_list:
                     send_mail_by_config_file, config_dir_path=config_dir_path)
 
         elif config["cycle"] == "every_tuesday":
-            if config["time"] == True:
+            if config["time"]:
                 schedule.every().tuesday.at(config["time"]).do(
                     send_mail_by_config_file, config_dir_path=config_dir_path)
             else:
@@ -175,7 +175,7 @@ for folder_path in folder_paths_list:
                     send_mail_by_config_file, config_dir_path=config_dir_path)
 
         elif config["cycle"] == "every_wednesday":
-            if config["time"] == True:
+            if config["time"]:
                 schedule.every().wednesday.at(config["time"]).do(
                     send_mail_by_config_file, config_dir_path=config_dir_path)
             else:
@@ -183,7 +183,7 @@ for folder_path in folder_paths_list:
                     send_mail_by_config_file, config_dir_path=config_dir_path)
 
         elif config["cycle"] == "every_thursday":
-            if config["time"] == True:
+            if config["time"]:
                 schedule.every().thursday.at(config["time"]).do(
                     send_mail_by_config_file, config_dir_path=config_dir_path)
             else:
@@ -191,7 +191,7 @@ for folder_path in folder_paths_list:
                     send_mail_by_config_file, config_dir_path=config_dir_path)
 
         elif config["cycle"] == "every_friday":
-            if config["time"] == True:
+            if config["time"]:
                 schedule.every().friday.at(config["time"]).do(
                     send_mail_by_config_file, config_dir_path=config_dir_path)
             else:

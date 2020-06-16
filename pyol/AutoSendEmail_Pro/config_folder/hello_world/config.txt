@@ -1,6 +1,6 @@
 {
     "status": "off",
-    "cycle":"every_second",
+    "cycle":"every_hour",
     "time":"",
     "period":10,
     "subject":"hello!",
