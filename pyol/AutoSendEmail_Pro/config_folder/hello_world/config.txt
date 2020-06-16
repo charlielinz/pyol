@@ -1,8 +1,8 @@
 {
-    "status": "on",
-    "cycle":"every_day",
-    "time":"10:12",
-    "period":2,
+    "status": "off",
+    "cycle":"every_second",
+    "time":"",
+    "period":10,
     "subject":"hello!",
     "to":"windylin31@yahoo.com.tw;windylin31.imu05g@nctu.edu.tw"
 }
