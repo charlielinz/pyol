@@ -1,6 +1,8 @@
 {
     "status": "on",
-    "period":10,
+    "cycle":"every_day",
+    "time":"10:12",
+    "period":2,
     "subject":"hello!",
     "to":"windylin31@yahoo.com.tw;windylin31.imu05g@nctu.edu.tw"
 }

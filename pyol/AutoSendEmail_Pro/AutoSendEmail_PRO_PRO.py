@@ -93,8 +93,95 @@ for folder_path in folder_paths_list:
     config = json.loads(config_json)
 
     if config["status"] == "on":
-        schedule.every(config["period"]).seconds.do(
-            send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        if config["cycle"] == "every_minute":
+            if config["period"] == True:
+                if config["time"] == True:
+                    schedule.every(config["period"]).minutes.at(config["time"]).do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+                else:
+                    schedule.every(config["period"]).minutes.do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                if config["time"] == True:
+                    schedule.every().minute.at(config["time"]).do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+                else:
+                    schedule.every().minute.do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_hour":
+            if config["period"] == True:
+                if config["time"] == True:
+                    schedule.every(config["period"]).hours.at(config["time"]).do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+                else:
+                    schedule.every(config["period"]).hours.do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                if config["time"] == True:
+                    schedule.every().hour.at(config["time"]).do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+                else:
+                    schedule.every().hour.do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_day":
+            if config["period"] == True:
+                if config["time"] == True:
+                    schedule.every(config["period"]).days.at(config["time"]).do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+                else:
+                    schedule.every(config["period"]).days.do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                if config["time"] == True:
+                    schedule.every().day.at(config["time"]).do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+                else:
+                    schedule.every().day.do(
+                        send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_monday":
+            if config["time"] == True:
+                schedule.every().monday.at(config["time"]).do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                schedule.every().monday.do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_tuesday":
+            if config["time"] == True:
+                schedule.every().monday.at(config["time"]).do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                schedule.every().monday.do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_wednesday":
+            if config["time"] == True:
+                schedule.every().monday.at(config["time"]).do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                schedule.every().monday.do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_thursday":
+            if config["time"] == True:
+                schedule.every().monday.at(config["time"]).do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                schedule.every().monday.do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+
+        elif config["cycle"] == "every_friday":
+            if config["time"] == True:
+                schedule.every().monday.at(config["time"]).do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+            else:
+                schedule.every().monday.do(
+                    send_mail_by_config_file, config_dir_path=config_dir_path)
+
 
 while True:
     schedule.run_pending()

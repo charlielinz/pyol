@@ -1,6 +1,7 @@
 {
     "status":"on",
-    "period":15,
+    "cycle":"every_wednesday",
+    "time":"10:10",
     "subject":"本週週報_林定垣",
     "to":"charlielin@iii.org.tw;ilovealinlin@gmail.com"
 }
