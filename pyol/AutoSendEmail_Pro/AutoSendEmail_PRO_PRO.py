@@ -55,6 +55,22 @@ def read_file_as_long_string(config_path):
 
 def send_mail_by_config_file(config_dir_path):
 
+    """
+
+    create a new file in your work folder and named it as "config.txt"
+    content must contain "status","cycle","period","time","subject","to"
+    example:
+    {
+        "status": "off",
+        "cycle":"every_second",
+        "time":"",
+        "period":10,
+        "subject":"hello!",
+        "to":"hello@yahoo.com.tw;world@gmail.com"
+    }
+    
+    """
+
     config_path = os.path.join(config_dir_path, "config.txt")
     body_path = os.path.join(config_dir_path, "body_config.txt")
     attachment_folder_path = os.path.join(config_dir_path, "attachment")
@@ -92,7 +108,23 @@ for folder_path in folder_paths_list:
     config_json = read_file_as_long_string(config_path=config_path)
     config = json.loads(config_json)
 
+    """
+    activate when "status":"on"
+    """
+
     if config["status"] == "on":
+
+        """
+
+        "cycle" is the schedule type you choose
+
+        if "cycle" is "every_second" or "every_minute" or "every_hour" or "every_day",
+        then you can choose to set one factor from "period" or "time".
+
+        if "cycle" is one of the weekday,
+        then you need to set a "time".
+
+        """
 
         if config["cycle"] == "every_second":
             if config["period"] == 0:
@@ -165,6 +197,7 @@ for folder_path in folder_paths_list:
             else:
                 schedule.every().friday.do(
                     send_mail_by_config_file, config_dir_path=config_dir_path)
+
     print(folder_path,config["status"],config["cycle"],config["time"])
 
 
